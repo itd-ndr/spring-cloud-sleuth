@@ -21,10 +21,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest(classes = SampleSleuthApplication.class)
-public class SampleSleuthApplicationTests {
+class SampleSleuthApplicationTests {
 
 	@Test
-	public void contextLoads() {
+	void contextLoads() {
 	}
 
 }

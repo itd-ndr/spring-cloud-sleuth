@@ -2,8 +2,8 @@ spring:
   sleuth:
     baggage:
       foo: bar
-      remoteFields:
-        - country-code
-        - x-vcap-request-id
       tagFields:
         - country-code
+management.tracing.baggage.remote-fields:
+  - country-code
+  - x-vcap-request-id

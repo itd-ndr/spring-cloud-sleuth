@@ -61,11 +61,11 @@ public class RequestSendingRunnable implements Runnable {
 
 	@Override
 	public void run() {
-		log.info(String.format("Sending the request to url [%s] with trace id in headers [%s]", this.url,
+		log.info("Sending the request to url [%s] with trace id in headers [%s]".formatted(this.url,
 				SpanUtil.idToHex(this.traceId)));
 		ResponseEntity<String> responseEntity = this.restTemplate.exchange(requestWithTraceId(), String.class);
 		then(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-		log.info(String.format("Received the following response [%s]", responseEntity));
+		log.info("Received the following response [%s]".formatted(responseEntity));
 	}
 
 	private RequestEntity<Void> requestWithTraceId() {

@@ -23,10 +23,10 @@ import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest(classes = SampleMessagingApplication.class)
 @TestPropertySource(properties = "sample.zipkin.enabled=false")
-public class SampleMessagingApplicationTests {
+class SampleMessagingApplicationTests {
 
 	@Test
-	public void contextLoads() {
+	void contextLoads() {
 	}
 
 }

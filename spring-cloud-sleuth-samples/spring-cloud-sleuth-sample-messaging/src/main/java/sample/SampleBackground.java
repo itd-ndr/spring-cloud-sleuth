@@ -19,7 +19,7 @@ package sample;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.sleuth.Tracer;
+import io.micrometer.tracing.Tracer;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 

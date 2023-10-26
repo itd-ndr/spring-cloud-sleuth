@@ -1,5 +1,5 @@
+
 spring:
   application:
     name: disabledapplication
-  sleuth:
-    enabled: false
+management.tracing.enabled: false

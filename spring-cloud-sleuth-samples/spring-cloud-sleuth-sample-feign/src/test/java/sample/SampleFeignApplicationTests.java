@@ -30,17 +30,17 @@ import org.springframework.test.context.TestPropertySource;
 @SpringBootTest(classes = SampleFeignApplication.class)
 @TestPropertySource(properties = "sample.zipkin.enabled=false")
 @ExtendWith(OutputCaptureExtension.class)
-public class SampleFeignApplicationTests {
+class SampleFeignApplicationTests {
 
 	private static final Log log = LogFactory.getLog(SampleFeignApplicationTests.class);
 
 	@Test
-	public void contextLoads() {
+	void contextLoads() {
 	}
 
 	// https://github.com/spring-cloud/spring-cloud-sleuth/issues/1396
 	@Test
-	public void should_not_pass_dash_as_default_service_name(CapturedOutput outputCapture) {
+	void should_not_pass_dash_as_default_service_name(CapturedOutput outputCapture) {
 		log.info("HELLO");
 
 		BDDAssertions.then(outputCapture.toString()).doesNotContain("INFO [-,,,]");

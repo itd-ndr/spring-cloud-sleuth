@@ -1,0 +1,2 @@
+org.springframework.cloud.sleuth.SleuthTestAutoConfiguration
+org.springframework.cloud.sleuth.autoconfig.TraceNoOpAutoConfiguration

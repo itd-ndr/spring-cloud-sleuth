@@ -18,19 +18,18 @@ package sample;
 
 import java.util.Random;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @FeignClient("zipkin")
 interface Zipkin {
 
-	@RequestMapping(value = "/call", method = RequestMethod.GET)
+	@GetMapping("/call")
 	String call();
 
-	@RequestMapping(value = "/hi2", method = RequestMethod.GET)
+	@GetMapping("/hi2")
 	String hi2();
 
 }
@@ -46,7 +45,6 @@ public class SampleController {
 
 	private final Random random = new Random();
 
-	@Autowired
 	public SampleController(Zipkin zipkin) {
 		this.zipkin = zipkin;
 	}

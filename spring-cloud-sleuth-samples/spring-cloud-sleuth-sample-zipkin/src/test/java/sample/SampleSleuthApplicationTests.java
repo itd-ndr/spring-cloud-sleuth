@@ -25,10 +25,10 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @SpringBootTest(classes = SampleZipkinApplication.class)
 @WebAppConfiguration
 @TestPropertySource(properties = "sample.zipkin.enabled=false")
-public class SampleSleuthApplicationTests {
+class SampleSleuthApplicationTests {
 
 	@Test
-	public void contextLoads() {
+	void contextLoads() {
 	}
 
 }

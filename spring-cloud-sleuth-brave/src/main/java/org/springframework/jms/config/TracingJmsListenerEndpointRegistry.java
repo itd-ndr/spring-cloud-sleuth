@@ -20,10 +20,10 @@ import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Set;
 
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageListener;
-import javax.jms.Session;
+import jakarta.jms.JMSException;
+import jakarta.jms.Message;
+import jakarta.jms.MessageListener;
+import jakarta.jms.Session;
 
 import brave.Span;
 import brave.jms.JmsTracing;
@@ -38,7 +38,7 @@ import org.springframework.lang.Nullable;
 
 /**
  * This ensures listeners end up continuing the trace from
- * {@link javax.jms.MessageConsumer#receive()}.
+ * {@link jakarta.jms.MessageConsumer#receive()}.
  *
  * Internal class for Sleuth, do not use. Its API can change at anytime.
  *
@@ -178,11 +178,11 @@ public final class TracingJmsListenerEndpointRegistry extends JmsListenerEndpoin
 	}
 
 	private JmsListenerEndpoint wrapEndpoint(JmsListenerEndpoint endpoint) {
-		if (endpoint instanceof MethodJmsListenerEndpoint) {
-			return trace((MethodJmsListenerEndpoint) endpoint);
+		if (endpoint instanceof MethodJmsListenerEndpoint listenerEndpoint) {
+			return trace(listenerEndpoint);
 		}
-		else if (endpoint instanceof SimpleJmsListenerEndpoint) {
-			return trace((SimpleJmsListenerEndpoint) endpoint);
+		else if (endpoint instanceof SimpleJmsListenerEndpoint listenerEndpoint) {
+			return trace(listenerEndpoint);
 		}
 		return endpoint;
 	}

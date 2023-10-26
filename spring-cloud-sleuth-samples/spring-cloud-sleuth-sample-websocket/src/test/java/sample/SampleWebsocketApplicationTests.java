@@ -25,10 +25,10 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @SpringBootTest(classes = SampleWebsocketApplication.class)
 @WebAppConfiguration
 @TestPropertySource(properties = "sample.zipkin.enabled=false")
-public class SampleWebsocketApplicationTests {
+class SampleWebsocketApplicationTests {
 
 	@Test
-	public void contextLoads() {
+	void contextLoads() {
 	}
 
 }

@@ -35,10 +35,6 @@
 	<dependencies>
 		<!-- CORE -->
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-sleuth-instrumentation</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 			<optional>true</optional>
@@ -47,6 +43,11 @@
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-core</artifactId>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-tracing</artifactId>
+			<version>1.0.11</version>
 		</dependency>
 		<dependency>
 			<groupId>io.projectreactor</groupId>
@@ -169,10 +170,6 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjrt</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-quartz</artifactId>
 			<optional>true</optional>
@@ -208,6 +205,11 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>net.ttddyy</groupId>
 			<artifactId>datasource-proxy</artifactId>
 			<optional>true</optional>
@@ -238,11 +240,6 @@
 			<optional>true</optional>
 		</dependency>
 		<!-- BRAVE -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-sleuth-brave</artifactId>
-			<optional>true</optional>
-		</dependency>
 		<dependency>
 			<groupId>io.zipkin.brave</groupId>
 			<artifactId>brave</artifactId>
@@ -311,11 +308,6 @@
 		<dependency>
 			<groupId>io.zipkin.aws</groupId>
 			<artifactId>brave-propagation-aws</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>javax.jms</groupId>
-			<artifactId>javax.jms-api</artifactId>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
@@ -405,14 +397,18 @@
 
 		<!-- Zipkin -->
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
+			<groupId>io.zipkin.reporter2</groupId>
+			<artifactId>zipkin-reporter-brave</artifactId>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>io.zipkin.zipkin2</groupId>
 			<artifactId>zipkin</artifactId>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.jms</groupId>
+			<artifactId>jakarta.jms-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>io.zipkin.reporter2</groupId>
@@ -486,11 +482,18 @@
 			<groupId>io.zipkin.brave</groupId>
 			<artifactId>brave-instrumentation-http-tests</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>junit</groupId>
+					<artifactId>junit</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>com.squareup.okhttp3</groupId>
-			<artifactId>mockwebserver</artifactId>
+			<artifactId>mockwebserver3-junit5</artifactId>
 			<scope>test</scope>
+			<version>5.0.0-alpha.11</version>
 		</dependency>
 
 		<!-- Zipkin -->

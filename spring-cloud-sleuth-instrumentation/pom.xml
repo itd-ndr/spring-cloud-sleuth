@@ -38,8 +38,9 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-sleuth-api</artifactId>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-tracing</artifactId>
+			<version>1.0.11</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -65,6 +66,11 @@
 			<groupId>io.rsocket</groupId>
 			<artifactId>rsocket-core</artifactId>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.batch</groupId>
+			<artifactId>jakarta.batch-api</artifactId>
+			<version>2.1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>io.r2dbc</groupId>
@@ -192,10 +198,6 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjrt</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>io.lettuce</groupId>
 			<artifactId>lettuce-core</artifactId>
 			<optional>true</optional>
@@ -270,6 +272,11 @@
 			<groupId>p6spy</groupId>
 			<artifactId>p6spy</artifactId>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>net.ttddyy</groupId>

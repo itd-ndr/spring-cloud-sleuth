@@ -43,11 +43,11 @@ import org.springframework.test.context.TestPropertySource;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.assertj.core.api.BDDAssertions.then;
 
-@SpringBootTest(classes = { IntegrationSpanCollectorConfig.class, SampleMessagingApplication.class },
+@SpringBootTest(classes = {IntegrationSpanCollectorConfig.class, SampleMessagingApplication.class},
 		webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
-@TestPropertySource(properties = { "sample.zipkin.enabled=true" })
+@TestPropertySource(properties = {"sample.zipkin.enabled=true"})
 @DirtiesContext
-public class MessagingApplicationTests extends AbstractIntegrationTest {
+class MessagingApplicationTests extends AbstractIntegrationTest {
 
 	private static int port = 3381;
 
@@ -60,12 +60,12 @@ public class MessagingApplicationTests extends AbstractIntegrationTest {
 	Tracer tracer;
 
 	@AfterEach
-	public void cleanup() {
+	void cleanup() {
 		this.testSpanHandler.spans.clear();
 	}
 
 	@Test
-	public void should_have_passed_trace_id_when_message_is_about_to_be_sent() {
+	void should_have_passed_trace_id_when_message_is_about_to_be_sent() {
 		Span span = tracer.nextSpan().start();
 		long traceId = span.context().traceId();
 
@@ -77,7 +77,7 @@ public class MessagingApplicationTests extends AbstractIntegrationTest {
 	}
 
 	@Test
-	public void should_have_passed_trace_id_and_generate_new_span_id_when_message_is_about_to_be_sent() {
+	void should_have_passed_trace_id_and_generate_new_span_id_when_message_is_about_to_be_sent() {
 		Span span = tracer.nextSpan().start();
 		long traceId = span.context().traceId();
 		long spanId = span.context().spanId();
@@ -93,7 +93,7 @@ public class MessagingApplicationTests extends AbstractIntegrationTest {
 	}
 
 	@Test
-	public void should_have_passed_trace_id_with_annotations_in_async_thread_when_message_is_about_to_be_sent() {
+	void should_have_passed_trace_id_with_annotations_in_async_thread_when_message_is_about_to_be_sent() {
 		Span span = tracer.nextSpan().start();
 		long traceId = span.context().traceId();
 
@@ -139,7 +139,7 @@ public class MessagingApplicationTests extends AbstractIntegrationTest {
 		log.info("Checking the parent child structure");
 		List<Optional<MutableSpan>> parentChild = spans.stream().filter(span -> span.parentId() != null).map(span -> {
 			Optional<MutableSpan> any = spans.stream().filter(span1 -> span1.id().equals(span.parentId())).findAny();
-			if (!any.isPresent()) {
+			if (any.isEmpty()) {
 				log.warn("Span with id [" + span.id() + "] and parent span id [" + span.parentId()
 						+ "] doesn't have a corresponding span with id equal to parent id");
 			}

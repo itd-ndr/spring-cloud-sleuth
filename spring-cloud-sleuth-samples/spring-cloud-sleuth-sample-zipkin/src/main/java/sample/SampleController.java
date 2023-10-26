@@ -24,8 +24,8 @@ import org.apache.commons.logging.LogFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.context.ServletWebServerInitializedEvent;
-import org.springframework.cloud.sleuth.Span;
-import org.springframework.cloud.sleuth.Tracer;
+import io.micrometer.tracing.Span;
+import io.micrometer.tracing.Tracer;
 import org.springframework.context.ApplicationListener;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -94,7 +94,7 @@ public class SampleController implements ApplicationListener<ServletWebServerIni
 	public String traced() throws InterruptedException {
 		Span span = this.tracer.nextSpan().name("http:customTraceEndpoint").start();
 		int millis = this.random.nextInt(1000);
-		log.info(String.format("Sleeping for [%d] millis", millis));
+		log.info("Sleeping for [%d] millis".formatted(millis));
 		Thread.sleep(millis);
 		this.tracer.currentSpan().tag("random-sleep-millis", String.valueOf(millis));
 
@@ -106,7 +106,7 @@ public class SampleController implements ApplicationListener<ServletWebServerIni
 	@RequestMapping("/start")
 	public String start() throws InterruptedException {
 		int millis = this.random.nextInt(1000);
-		log.info(String.format("Sleeping for [%d] millis", millis));
+		log.info("Sleeping for [%d] millis".formatted(millis));
 		Thread.sleep(millis);
 		this.tracer.currentSpan().tag("random-sleep-millis", String.valueOf(millis));
 		String s = this.restTemplate.getForObject("http://localhost:" + this.port + "/call", String.class);
